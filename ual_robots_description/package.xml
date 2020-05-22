@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>ual_robots_description</name>
+  <version>0.0.0</version>
+  <description>This package contains robots descriptions, 
+  mostly aimed for px4 sitl gazebo simulation.</description>
+
+  <maintainer email="freal@us.es">Fran Real</maintainer>
+  <maintainer email="arturotorres@us.es">Arturo Torres</maintainer>
+
+  <license>MIT</license>
+
+  <!-- <url type="website">http://wiki.ros.org/ual_gazebo_tools</url> -->
+
+  <author email="freal@us.es">Fran Real</author>
+  <author email="arturotorres@us.es">Arturo Torres</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
