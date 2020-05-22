@@ -19,8 +19,8 @@ def main():
                         help="World file name with respect to GAZEBO_RESOURCE_PATH")
     parser.add_argument('-add_model_path', type=str, default='',
                         help="Path to add to GAZEBO_MODEL_PATH")
-    parser.add_argument('-description_package', type=str, default="robots_description",
-                        help='robot description package, must follow robots_description file structure')
+    parser.add_argument('-description_package', type=str, default="ual_robots_description",
+                        help='robot description package, must follow ual_robots_description file structure')
     parser.add_argument('-debug', type=bool, default=False,
                         help='run gzserver with gdb')
     args, unknown = parser.parse_known_args()
@@ -36,14 +36,14 @@ def main():
     gz_env['GAZEBO_PLUGIN_PATH'] = px4_dir + '/build/px4_sitl_default/build_gazebo' + \
                                    ':' + current_gz_plugin_path
     current_gz_model_path = gz_env.get('GAZEBO_MODEL_PATH', '')
-    # Always include robots_description parent path
-    robots_description_parent_path = os.path.abspath(os.path.join(\
-                                              rospack.get_path('robots_description'), os.pardir))
+    # Always include ual_robots_description parent path
+    ual_robots_description_parent_path = os.path.abspath(os.path.join(\
+                                              rospack.get_path('ual_robots_description'), os.pardir))
     gz_env['GAZEBO_MODEL_PATH'] = px4_dir + '/Tools/sitl_gazebo/models' + \
-                                 ':' + robots_description_parent_path + \
+                                 ':' + ual_robots_description_parent_path + \
                                  ':' + current_gz_model_path
-    # Include description_package parent path if it is not robots_description
-    if args.description_package is not "robots_description":
+    # Include description_package parent path if it is not ual_robots_description
+    if args.description_package is not "ual_robots_description":
         description_package_parent_path = os.path.abspath(os.path.join(\
                                               rospack.get_path(args.description_package), os.pardir))
         gz_env['GAZEBO_MODEL_PATH'] += ':' + description_package_parent_path

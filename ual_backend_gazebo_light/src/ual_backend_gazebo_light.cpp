@@ -35,7 +35,7 @@
 // Frames/s for publishing in gazebo topics
 #define FPS 25.0
 
-namespace grvc { namespace ual {
+namespace ual {
 
 BackendGazeboLight::BackendGazeboLight()
     : Backend(), generator_(std::chrono::system_clock::now().time_since_epoch().count()), tf_listener_(tf_buffer_)
@@ -141,7 +141,7 @@ BackendGazeboLight::BackendGazeboLight()
     });
 
     ROS_INFO("BackendGazeboLight %d running!", robot_id_);
-    this->state_ = uav_abstraction_layer::State::LANDED_ARMED;
+    this->state_ = ual_core::State::LANDED_ARMED;
 }
 
 BackendGazeboLight::~BackendGazeboLight() {
@@ -285,7 +285,7 @@ Velocity BackendGazeboLight::calculateRefVel(Pose _target_pose) {
 }
 
 void BackendGazeboLight::takeOff(double _height) {
-    this->state_ = uav_abstraction_layer::State::TAKING_OFF;
+    this->state_ = ual_core::State::TAKING_OFF;
     control_in_vel_ = false;  // Take off control is performed in position (not velocity)
 
     // Set offboard mode after saving home pose
@@ -301,11 +301,11 @@ void BackendGazeboLight::takeOff(double _height) {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     ROS_INFO("Flying!");
-    this->state_ = uav_abstraction_layer::State::FLYING_AUTO;
+    this->state_ = ual_core::State::FLYING_AUTO;
 }
 
 void BackendGazeboLight::land() {
-    this->state_ = uav_abstraction_layer::State::LANDING;
+    this->state_ = ual_core::State::LANDING;
     control_in_vel_ = false;  // Back to control in position (just in case)
 
     ROS_INFO("Landing...");
@@ -317,7 +317,7 @@ void BackendGazeboLight::land() {
     }
     ROS_INFO("Landed!");
     flying_ = false;
-    this->state_ = uav_abstraction_layer::State::LANDED_ARMED;
+    this->state_ = ual_core::State::LANDED_ARMED;
 }
 
 void BackendGazeboLight::setVelocity(const Velocity& _vel) {
@@ -603,4 +603,4 @@ void BackendGazeboLight::initHomeFrame() {
     ref_pose_ = cur_pose_;
 }
 
-}}	// namespace grvc::ual
+}	// namespace ual

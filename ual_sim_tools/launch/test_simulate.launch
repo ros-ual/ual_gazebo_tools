@@ -15,13 +15,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <rosparam param="/use_sim_time">true</rosparam>
 
     <!-- Launch Gazebo simulation TODO: world location? -->
-    <node pkg="px4_bringup" type="launch_gzworld.py" name="gazebo_world" output="screen"
-        args="-physics=ode -world=$(find px4_bringup)/config/empty_light.world">
+    <node pkg="ual_sim_tools" type="launch_gzworld.py" name="gazebo_world" output="screen"
+        args="-physics=ode -world=$(find ual_sim_tools)/config/empty_light.world">
         <rosparam param="sim_origin">[37.558542, -5.931074, 7.89]</rosparam><!-- [lat,lon,alt] -->
     </node>
 
     <!-- Launch robot id=1 -->
-    <include file="$(find px4_bringup)/launch/spawn_robot.launch" unless="$(arg multi)">
+    <include file="$(find ual_sim_tools)/launch/spawn_robot.launch" unless="$(arg multi)">
         <arg name="id" value="1"/>
         <arg name="material" value="Orange"/>
         <arg name="x" default="0"/>
@@ -32,7 +32,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     <group if="$(arg multi)">
         <!-- Launch robot id=1 -->
-        <include file="$(find px4_bringup)/launch/spawn_robot.launch" ns="uav_1">
+        <include file="$(find ual_sim_tools)/launch/spawn_robot.launch" ns="uav_1">
             <arg name="id" value="1"/>
             <arg name="material" value="Orange"/>
             <arg name="x" default="0"/>
@@ -41,7 +41,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <arg name="yaw" default="0"/>
         </include>
         <!-- Launch robot id=2 -->
-        <include file="$(find px4_bringup)/launch/spawn_robot.launch" ns="uav_2">
+        <include file="$(find ual_sim_tools)/launch/spawn_robot.launch" ns="uav_2">
             <arg name="id" value="2"/>
             <arg name="material" value="Indigo"/>
             <arg name="x" default="-10"/>
@@ -50,7 +50,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <arg name="yaw" default="0"/>
         </include>
         <!-- Launch robot id=3 -->
-        <include file="$(find px4_bringup)/launch/spawn_robot.launch" ns="uav_3">
+        <include file="$(find ual_sim_tools)/launch/spawn_robot.launch" ns="uav_3">
             <arg name="id" value="3"/>
             <arg name="material" value="ZincYellow"/>
             <arg name="x" default="10"/>

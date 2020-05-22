@@ -28,8 +28,8 @@ def main():
                         help='initial z position')
     parser.add_argument('-Y', type=float, default=0.0,
                         help='initial yaw angle')
-    parser.add_argument('-description_package', type=str, default="robots_description",
-                        help='robot description package, must follow robots_description file structure')
+    parser.add_argument('-description_package', type=str, default="ual_robots_description",
+                        help='robot description package, must follow ual_robots_description file structure')
     parser.add_argument('-material', type=str, default="DarkGrey",
                         help='robot Gazebo/material; \
                         see materials/scripts/gazebo.material (at your gazebo version)')

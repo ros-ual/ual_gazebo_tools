@@ -18,8 +18,8 @@
 // OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //----------------------------------------------------------------------------------------------------------------------
-#include <uav_abstraction_layer/ual.h>
-#include <uav_abstraction_layer/backend.h>
+#include <ual_core/ual.h>
+#include <ual_core/backend.h>
 #include <ual_backend_gazebo_light/ual_backend_gazebo_light.h>
 #include <ros/ros.h>
 
@@ -27,7 +27,7 @@ int main(int _argc, char** _argv) {
 
     ros::init(_argc, _argv, "ual_server");
 
-    grvc::ual::UAL ual(new grvc::ual::BackendGazeboLight());
+    ual::UAL ual(new ual::BackendGazeboLight());
 
     int uav_id;
     ros::param::param<int>("~uav_id", uav_id, 1);

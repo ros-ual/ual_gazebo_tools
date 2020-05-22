@@ -1,7 +1,7 @@
 <launch>
 
 	<arg name="model_name" default="aeroarms"/>
-	<arg name="description_package" default="robots_description"/>
+	<arg name="description_package" default="ual_robots_description"/>
 
 	<!-- robot_description for rviz -->
 	<param name="robot_description"
@@ -11,6 +11,6 @@
 		<param name="use_gui" value="true"/>
 	</node>
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find robots_description)/config/visualize.rviz" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find ual_robots_description)/config/visualize.rviz" />
 
 </launch>

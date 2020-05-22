@@ -18,13 +18,13 @@
 // OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //----------------------------------------------------------------------------------------------------------------------
-#ifndef UAV_ABSTRACTION_LAYER_BACKEND_LIGHT_H
-#define UAV_ABSTRACTION_LAYER_BACKEND_LIGHT_H
+#ifndef UAL_BACKEND_LIGHT_H
+#define UAL_BACKEND_LIGHT_H
 
 #include <thread>
 #include <random>
 
-#include <uav_abstraction_layer/backend.h>
+#include <ual_core/backend.h>
 #include <ros/ros.h>
 
 #include <geometry_msgs/PoseStamped.h>
@@ -34,7 +34,7 @@
 #include <tf2_ros/static_transform_broadcaster.h>
 #include <tf2_ros/transform_listener.h>
 
-namespace grvc { namespace ual {
+namespace ual {
 
 class BackendGazeboLight : public Backend {
 
@@ -133,6 +133,6 @@ private:
     std::thread offboard_thread_;
 };
 
-}}	// namespace grvc::ual
+}	// namespace ual
 
-#endif // UAV_ABSTRACTION_LAYER_BACKEND_LIGHT_H
+#endif // UAL_BACKEND_LIGHT_H

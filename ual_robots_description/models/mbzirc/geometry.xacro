@@ -46,8 +46,8 @@
   </xacro:property>
 
   <!-- Included URDF Files -->
-  <xacro:include filename="$(find robots_description)/urdf/multirotor_base.xacro" />
-  <xacro:include filename="$(find robots_description)/urdf/component_snippets.xacro" />
+  <xacro:include filename="$(find ual_robots_description)/urdf/multirotor_base.xacro" />
+  <xacro:include filename="$(find ual_robots_description)/urdf/component_snippets.xacro" />
 
   <!-- Instantiate multirotor_base_macro once -->
   <xacro:multirotor_base_macro

@@ -14,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <arg name="id" default="1"/>
     <arg name="mode" default="sitl"/>
  
-    <arg name="description_package" default="robots_description"/>
+    <arg name="description_package" default="ual_robots_description"/>
     <arg name="material" default="Orange"/>
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
@@ -30,14 +30,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     <group if="$(eval mode == 'sitl')">
         <!-- Spawn model in Gazebo -->
-        <node pkg="px4_bringup" type="spawn_gzmodel.py" name="spawn_gzmodel_$(arg id)" output="screen"
+        <node pkg="ual_sim_tools" type="spawn_gzmodel.py" name="spawn_gzmodel_$(arg id)" output="screen"
         args="-model=$(arg robot_model) -id=$(arg id) -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) 
               -description_package=$(arg description_package) -material=$(arg material) -frame_id=$(arg frame_id) 
               -append_xacro_args $(arg append_xacro_args)"/>
 
         <!-- Run px4 controller -->
         <!-- Important parameter cwd="node", px4 link generation may cause errors otherwise -->
-        <node pkg="px4_bringup" type="run_px4sitl.py" cwd="node" name="run_px4sitl_$(arg id)" output="screen"
+        <node pkg="ual_sim_tools" type="run_px4sitl.py" cwd="node" name="run_px4sitl_$(arg id)" output="screen"
         args="-model=$(arg robot_model) -id=$(arg id) -description_package=$(arg description_package)"/>
 
         <!-- Run safety pilot simulator -->
@@ -47,7 +47,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     </group>
 
     <!-- Run mavros node -->
-    <node pkg="px4_bringup" type="run_mavros.py" name="run_mavros_$(arg id)" output="screen" if="$(arg use_mavros)"
+    <node pkg="ual_sim_tools" type="run_mavros.py" name="run_mavros_$(arg id)" output="screen" if="$(arg use_mavros)"
     args="-id=$(arg id) -mode=$(arg mode) -fcu_url=$(arg fcu_url) -gcs_url=$(arg gcs_url) -rtcm_topic=$(arg rtcm_topic)" />
 
 </launch>

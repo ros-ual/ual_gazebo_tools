@@ -64,7 +64,7 @@ def main():
             subprocess.call("rosparam set " + node_name + "/gcs_url " + args.gcs_url, shell=True)
 
     # ...and load blacklist, config (as seen in mavros node.launch)
-    yaml_path = rospack.get_path("px4_bringup") + "/config/"
+    yaml_path = rospack.get_path("ual_sim_tools") + "/config/"
     subprocess.call("rosparam load " + yaml_path + "px4_pluginlists.yaml " + \
     node_name, shell=True)
     subprocess.call("rosparam load " + yaml_path + "px4_config.yaml " + \

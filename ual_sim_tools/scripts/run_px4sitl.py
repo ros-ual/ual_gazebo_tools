@@ -16,8 +16,8 @@ def main():
                         help='estimator to use')
     parser.add_argument('-id', type=int, default=1,
                         help='robot id, used to compute udp ports')
-    parser.add_argument('-description_package', type=str, default="robots_description",
-                        help='robot description package, must follow robots_description file structure')
+    parser.add_argument('-description_package', type=str, default="ual_robots_description",
+                        help='robot description package, must follow ual_robots_description file structure')
     args, unknown = parser.parse_known_args()
     utils.check_unknown_args(unknown)
 

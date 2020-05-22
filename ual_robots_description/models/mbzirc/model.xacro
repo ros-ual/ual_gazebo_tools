@@ -15,10 +15,10 @@
   <xacro:arg name='enable_logging' default='false' />
 
   <!-- macros for gazebo plugins, sensors -->
-  <xacro:include filename="$(find robots_description)/urdf/component_snippets.xacro" />
+  <xacro:include filename="$(find ual_robots_description)/urdf/component_snippets.xacro" />
 
   <!-- Instantiate mbzirc "mechanics" -->
-  <xacro:include filename="$(find robots_description)/models/mbzirc/geometry.xacro" />
+  <xacro:include filename="$(find ual_robots_description)/models/mbzirc/geometry.xacro" />
 
   <xacro:if value="$(arg enable_gps_plugin)">
     <!-- Instantiate gps plugin. -->
