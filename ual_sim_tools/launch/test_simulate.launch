@@ -23,6 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <!-- Launch robot id=1 -->
     <include file="$(find ual_sim_tools)/launch/spawn_robot.launch" unless="$(arg multi)">
         <arg name="id" value="1"/>
+        <arg name="robot_model" value="mbzirc"/>
         <arg name="material" value="Orange"/>
         <arg name="x" default="0"/>
         <arg name="y" default="0"/>
